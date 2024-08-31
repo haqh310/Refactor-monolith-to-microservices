@@ -23,8 +23,8 @@ jobs:
           name: Push Docker Image
           command: |
             echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-            docker-compose -f udagram-deployment/docker-compose-build.yaml build --parallel
-            docker-compose -f udagram-deployment/docker-compose-build.yaml push
+            docker-compose -f docker-compose-build.yaml build --parallel
+            docker-compose -f docker-compose-build.yaml push
 
 workflows:
   version: 2
