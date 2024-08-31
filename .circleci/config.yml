@@ -3,10 +3,10 @@ version: 2.1
 executors:
   docker-executor:
     docker:
-      - image: haqh310/udagram-backend-feed
-      - image: haqh310/udagram-backend-user
-      - image: haqh310/udagram-frontend
-      - image: haqh310/reverse-proxy
+      - image: udagram-backend-feed
+      - image: udagram-backend-user
+      - image: udagram-frontend
+      - image: reverse-proxy
 
 jobs:
   build:
