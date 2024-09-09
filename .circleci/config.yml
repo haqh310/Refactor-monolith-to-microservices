@@ -30,7 +30,7 @@ jobs:
             docker build -t udagram-frontend ./udagram-frontend
             docker tag udagram-frontend haqh310/udagram-frontend:v1
 
-            docker build -t udagram-reverseproxy ./udagram-reverseproxyr
+            docker build -t udagram-reverseproxy ./udagram-reverseproxy
             docker tag udagram-reverseproxy haqh310/udagram-reverseproxy:v1
 
             echo "----------Login DockerHub----------"
