@@ -1,5 +1,53 @@
 version: 2.1
 
+jobs:
+  Refactor-monolith-to-microservices:
+    docker:
+      - image: circleci/node:16
+    steps:
+      - checkout
+  build-docker:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          name: Build docker container for microservices
+          command:
+            curl -fsSL https://dep.nodesource.com/setup_16.x | sudo -E bash - 
+            sudo apt-get install -y nodejs
+            node -v
+            npm -v
+
+            docker build -t udagram-api-feed ./udagram-api-feed
+            docker tag udagram-api-feed haqh310/udagram-api-feed:v1
+
+            docker build -t udagram-api-user ./udagram-api-user
+            docker tag udagram-api-user haqh310/udagram-api-user:v1
+
+            docker build -t udagram-frontend ./udagram-frontend
+            docker tag udagram-frontend haqh310/udagram-frontend:v1
+
+            docker build -t udagram-reverseproxy ./udagram-reverseproxyr
+            docker tag udagram-reverseproxy haqh310/udagram-reverseproxy:v1
+
+            docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+
+            docker push haqh310/udagram-api-feed:v1
+            docker push haqh310/udagram-api-user:v1
+            docker push haqh310/udagram-frontend:v1
+            docker push haqh310/udagram-reverseproxy:v1
+
+workflows:
+  default:
+    jobs:
+      - Refactor-monolith-to-microservices
+      - build-docker:
+          requires: [Refactor-monolith-to-microservices]
+
+
+
+
+
 executors:
   docker-executor:
     docker:
