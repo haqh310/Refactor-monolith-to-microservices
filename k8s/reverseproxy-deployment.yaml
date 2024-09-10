@@ -16,14 +16,14 @@ spec:
         service: udagram-reverseproxy
     spec:
       containers:
-      - image: haqh310/udagram-reverseproxy:v1
+      - image: haqh310/udagram-reverseproxy:v1 
         name: udagram-reverseproxy
         imagePullPolicy: Always
         resources:
           requests:
-            cpu: "250m"
-          limits:
             cpu: "500m"
+          limits:
+            cpu: "1000m"
         ports:
-        - containerPort: 8080
+        - containerPort: 80
 

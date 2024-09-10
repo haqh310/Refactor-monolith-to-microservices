@@ -11,4 +11,4 @@ data:
   AWS_REGION: us-east-1
   AWS_PROFILE: default
   JWT_SECRET: haqh310
-  URL: http://add85c17f25c8475ca44e32e8bf68818-754982464.us-east-1.elb.amazonaws.com:8100
+  URL: aa36c0b1100494e048aa1cf6ab0eefe5-1373948509.us-east-1.elb.amazonaws.com:8100
